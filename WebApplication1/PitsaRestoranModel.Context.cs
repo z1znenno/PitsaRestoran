@@ -33,5 +33,9 @@ namespace WebApplication1
         public DbSet<Pitsa> PitsaSet { get; set; }
         public DbSet<Koostisosa> KoostisosaSet { get; set; }
         public DbSet<PitsaKoostisosad> PitsaKoostisosadSet { get; set; }
+        public DbSet<Klient> KlientSet { get; set; }
+        public DbSet<Tellimus> TellimusSet { get; set; }
+        public DbSet<TellimusToode> TellimusToodeSet { get; set; }
+        public DbSet<laud> laudSet { get; set; }
     }
 }

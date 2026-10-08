@@ -19,6 +19,13 @@
         <EntityTypeShape EntityType="PitsaRestoranModel.PitsaKoostisosad" Width="1.5" PointX="6.125" PointY="7" />
         <AssociationConnector Association="PitsaRestoranModel.KoostisosaPitsaKoostisosad" />
         <AssociationConnector Association="PitsaRestoranModel.ToodePitsaKoostisosad" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Klient" Width="1.5" PointX="11" PointY="4.875" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Tellimus" Width="1.5" PointX="12.625" PointY="1.625" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.TellimusToode" Width="1.5" PointX="9.875" PointY="0.625" />
+        <AssociationConnector Association="PitsaRestoranModel.KlientTellimus" />
+        <AssociationConnector Association="PitsaRestoranModel.TellimusTellimusToode" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.laud" Width="1.5" PointX="13.125" PointY="4.75" />
+        <AssociationConnector Association="PitsaRestoranModel.laudTellimus" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

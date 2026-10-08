@@ -242,7 +242,13 @@
     <Compile Include="Kategooria.cs">
       <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Klient.cs">
+      <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Koostisosa.cs">
+      <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="laud.cs">
       <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pitsa.cs">
@@ -279,6 +285,12 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Tellimus.cs">
+      <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TellimusToode.cs">
+      <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Toode.cs">
       <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
