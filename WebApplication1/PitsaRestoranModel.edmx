@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PitsaRestoranModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PitsaRestoranModelStoreContainer">
+    <EntitySet Name="TootajaSet" EntityType="PitsaRestoranModel.Store.TootajaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ametSet" EntityType="PitsaRestoranModel.Store.ametSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AmetiMaaratusSet" EntityType="PitsaRestoranModel.Store.AmetiMaaratusSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TootajaAmetiMaaratus" Association="PitsaRestoranModel.Store.TootajaAmetiMaaratus">
+      <End Role="Tootaja" EntitySet="TootajaSet" />
+      <End Role="AmetiMaaratus" EntitySet="AmetiMaaratusSet" />
+    </AssociationSet>
+    <AssociationSet Name="ametAmetiMaaratus" Association="PitsaRestoranModel.Store.ametAmetiMaaratus">
+      <End Role="amet" EntitySet="ametSet" />
+      <End Role="AmetiMaaratus" EntitySet="AmetiMaaratusSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TootajaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isikukood" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ametSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AmetiMaaratusSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="alguskuupaev" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tootaja_Id" Type="int" Nullable="false" />
+    <Property Name="amet_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TootajaAmetiMaaratus">
+    <End Role="Tootaja" Type="PitsaRestoranModel.Store.TootajaSet" Multiplicity="1" />
+    <End Role="AmetiMaaratus" Type="PitsaRestoranModel.Store.AmetiMaaratusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tootaja">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AmetiMaaratus">
+        <PropertyRef Name="Tootaja_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ametAmetiMaaratus">
+    <End Role="amet" Type="PitsaRestoranModel.Store.ametSet" Multiplicity="1" />
+    <End Role="AmetiMaaratus" Type="PitsaRestoranModel.Store.AmetiMaaratusSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="amet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AmetiMaaratus">
+        <PropertyRef Name="amet_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PitsaRestoranModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="PitsaRestoranModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TootajaSet" EntityType="PitsaRestoranModel.Tootaja" />
+          <EntitySet Name="ametSet" EntityType="PitsaRestoranModel.amet" />
+          <EntitySet Name="AmetiMaaratusSet" EntityType="PitsaRestoranModel.AmetiMaaratus" />
+          <AssociationSet Name="TootajaAmetiMaaratus" Association="PitsaRestoranModel.TootajaAmetiMaaratus">
+            <End Role="Tootaja" EntitySet="TootajaSet" />
+            <End Role="AmetiMaaratus" EntitySet="AmetiMaaratusSet" />
+          </AssociationSet>
+          <AssociationSet Name="ametAmetiMaaratus" Association="PitsaRestoranModel.ametAmetiMaaratus">
+            <End Role="amet" EntitySet="ametSet" />
+            <End Role="AmetiMaaratus" EntitySet="AmetiMaaratusSet" />
+          </AssociationSet>
+          <EntitySet Name="KategooriaSet" EntityType="PitsaRestoranModel.Kategooria" />
+          <EntitySet Name="ToodeSet" EntityType="PitsaRestoranModel.Toode" />
+          <AssociationSet Name="KategooriaToode" Association="PitsaRestoranModel.KategooriaToode">
+            <End Role="Kategooria" EntitySet="KategooriaSet" />
+            <End Role="Toode" EntitySet="ToodeSet" />
+          </AssociationSet>
+          <EntitySet Name="PitsaSet" EntityType="PitsaRestoranModel.Pitsa" />
+          <AssociationSet Name="ToodePitsa" Association="PitsaRestoranModel.ToodePitsa">
+            <End Role="Toode" EntitySet="ToodeSet" />
+            <End Role="Pitsa" EntitySet="PitsaSet" />
+          </AssociationSet>
+          <EntitySet Name="KoostisosaSet" EntityType="PitsaRestoranModel.Koostisosa" />
+          <EntitySet Name="PitsaKoostisosadSet" EntityType="PitsaRestoranModel.PitsaKoostisosad" />
+          <AssociationSet Name="KoostisosaPitsaKoostisosad" Association="PitsaRestoranModel.KoostisosaPitsaKoostisosad">
+            <End Role="Koostisosa" EntitySet="KoostisosaSet" />
+            <End Role="PitsaKoostisosad" EntitySet="PitsaKoostisosadSet" />
+          </AssociationSet>
+          <AssociationSet Name="ToodePitsaKoostisosad" Association="PitsaRestoranModel.ToodePitsaKoostisosad">
+            <End Role="Toode" EntitySet="ToodeSet" />
+            <End Role="PitsaKoostisosad" EntitySet="PitsaKoostisosadSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tootaja">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eesnimi" Type="String" Nullable="false" />
+          <Property Name="perenimi" Type="String" Nullable="false" />
+          <Property Name="isikukood" Type="String" Nullable="false" />
+          <NavigationProperty Name="AmetiMaaratus" Relationship="PitsaRestoranModel.TootajaAmetiMaaratus" FromRole="Tootaja" ToRole="AmetiMaaratus" />
+        </EntityType>
+        <EntityType Name="amet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" />
+          <NavigationProperty Name="AmetiMaaratus" Relationship="PitsaRestoranModel.ametAmetiMaaratus" FromRole="amet" ToRole="AmetiMaaratus" />
+        </EntityType>
+        <EntityType Name="AmetiMaaratus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alguskuupaev" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Tootaja" Relationship="PitsaRestoranModel.TootajaAmetiMaaratus" FromRole="AmetiMaaratus" ToRole="Tootaja" />
+          <NavigationProperty Name="amet" Relationship="PitsaRestoranModel.ametAmetiMaaratus" FromRole="AmetiMaaratus" ToRole="amet" />
+        </EntityType>
+        <Association Name="TootajaAmetiMaaratus">
+          <End Type="PitsaRestoranModel.Tootaja" Role="Tootaja" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.AmetiMaaratus" Role="AmetiMaaratus" Multiplicity="*" />
+        </Association>
+        <Association Name="ametAmetiMaaratus">
+          <End Type="PitsaRestoranModel.amet" Role="amet" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.AmetiMaaratus" Role="AmetiMaaratus" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Kategooria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.KategooriaToode" FromRole="Kategooria" ToRole="Toode" />
+        </EntityType>
+        <EntityType Name="Toode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" />
+          <Property Name="hind" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Kategooria" Relationship="PitsaRestoranModel.KategooriaToode" FromRole="Toode" ToRole="Kategooria" />
+          <NavigationProperty Name="Pitsa" Relationship="PitsaRestoranModel.ToodePitsa" FromRole="Toode" ToRole="Pitsa" />
+          <NavigationProperty Name="PitsaKoostisosad" Relationship="PitsaRestoranModel.ToodePitsaKoostisosad" FromRole="Toode" ToRole="PitsaKoostisosad" />
+        </EntityType>
+        <Association Name="KategooriaToode">
+          <End Type="PitsaRestoranModel.Kategooria" Role="Kategooria" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.Toode" Role="Toode" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Pitsa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.ToodePitsa" FromRole="Pitsa" ToRole="Toode" />
+        </EntityType>
+        <Association Name="ToodePitsa">
+          <End Type="PitsaRestoranModel.Toode" Role="Toode" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.Pitsa" Role="Pitsa" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Koostisosa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="Kehtivusaeg" Type="String" Nullable="false" />
+          <NavigationProperty Name="PitsaKoostisosad" Relationship="PitsaRestoranModel.KoostisosaPitsaKoostisosad" FromRole="Koostisosa" ToRole="PitsaKoostisosad" />
+        </EntityType>
+        <EntityType Name="PitsaKoostisosad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Koostisosa" Relationship="PitsaRestoranModel.KoostisosaPitsaKoostisosad" FromRole="PitsaKoostisosad" ToRole="Koostisosa" />
+          <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.ToodePitsaKoostisosad" FromRole="PitsaKoostisosad" ToRole="Toode" />
+        </EntityType>
+        <Association Name="KoostisosaPitsaKoostisosad">
+          <End Type="PitsaRestoranModel.Koostisosa" Role="Koostisosa" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.PitsaKoostisosad" Role="PitsaKoostisosad" Multiplicity="*" />
+        </Association>
+        <Association Name="ToodePitsaKoostisosad">
+          <End Type="PitsaRestoranModel.Toode" Role="Toode" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.PitsaKoostisosad" Role="PitsaKoostisosad" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PitsaRestoranModelStoreContainer" CdmEntityContainer="PitsaRestoranModelContainer">
+    <EntitySetMapping Name="TootajaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PitsaRestoranModel.Tootaja)">
+        <MappingFragment StoreEntitySet="TootajaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="eesnimi" ColumnName="eesnimi" />
+          <ScalarProperty Name="perenimi" ColumnName="perenimi" />
+          <ScalarProperty Name="isikukood" ColumnName="isikukood" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ametSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PitsaRestoranModel.amet)">
+        <MappingFragment StoreEntitySet="ametSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nimetus" ColumnName="nimetus" />
+          <ScalarProperty Name="kirjeldus" ColumnName="kirjeldus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AmetiMaaratusSet">
+      <EntityTypeMapping TypeName="IsTypeOf(PitsaRestoranModel.AmetiMaaratus)">
+        <MappingFragment StoreEntitySet="AmetiMaaratusSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="alguskuupaev" ColumnName="alguskuupaev" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TootajaAmetiMaaratus" TypeName="PitsaRestoranModel.TootajaAmetiMaaratus" StoreEntitySet="AmetiMaaratusSet">
+      <EndProperty Name="Tootaja">
+        <ScalarProperty Name="Id" ColumnName="Tootaja_Id" />
+      </EndProperty>
+      <EndProperty Name="AmetiMaaratus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ametAmetiMaaratus" TypeName="PitsaRestoranModel.ametAmetiMaaratus" StoreEntitySet="AmetiMaaratusSet">
+      <EndProperty Name="amet">
+        <ScalarProperty Name="Id" ColumnName="amet_Id" />
+      </EndProperty>
+      <EndProperty Name="AmetiMaaratus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

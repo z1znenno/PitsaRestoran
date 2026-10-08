@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0fb2072bed04fbe8895e92d2e9739ab" Name="Diagram1" >
+        <EntityTypeShape EntityType="PitsaRestoranModel.Tootaja" Width="1.5" PointX="5.375" PointY="4.25" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.amet" Width="1.5" PointX="9" PointY="2.625" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.AmetiMaaratus" Width="1.5" PointX="5.875" PointY="1.625" />
+        <AssociationConnector Association="PitsaRestoranModel.TootajaAmetiMaaratus" />
+        <AssociationConnector Association="PitsaRestoranModel.ametAmetiMaaratus" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Kategooria" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Toode" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="PitsaRestoranModel.KategooriaToode" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Pitsa" Width="1.5" PointX="1" PointY="1.75" />
+        <AssociationConnector Association="PitsaRestoranModel.ToodePitsa" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.Koostisosa" Width="1.5" PointX="8" PointY="4.75" />
+        <EntityTypeShape EntityType="PitsaRestoranModel.PitsaKoostisosad" Width="1.5" PointX="6.125" PointY="7" />
+        <AssociationConnector Association="PitsaRestoranModel.KoostisosaPitsaKoostisosad" />
+        <AssociationConnector Association="PitsaRestoranModel.ToodePitsaKoostisosad" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
