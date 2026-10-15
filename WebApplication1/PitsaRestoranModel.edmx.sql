@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/08/2026 13:22:57
--- Generated from EDMX file: C:\Users\opilane\source\repos\WebApplication1\WebApplication1\PitsaRestoranModel.edmx
+-- Date Created: 10/15/2026 10:55:44
+-- Generated from EDMX file: C:\Users\opilane\source\repos\z1znenno\PitsaRestoran\WebApplication1\PitsaRestoranModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [test];
+USE [PitsaRestoran2];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -23,6 +23,27 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ametAmetiMaaratus]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AmetiMaaratusSet] DROP CONSTRAINT [FK_ametAmetiMaaratus];
 GO
+IF OBJECT_ID(N'[dbo].[FK_KategooriaToode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ToodeSet] DROP CONSTRAINT [FK_KategooriaToode];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ToodePitsa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PitsaSet] DROP CONSTRAINT [FK_ToodePitsa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KoostisosaPitsaKoostisosad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PitsaKoostisosadSet] DROP CONSTRAINT [FK_KoostisosaPitsaKoostisosad];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ToodePitsaKoostisosad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PitsaKoostisosadSet] DROP CONSTRAINT [FK_ToodePitsaKoostisosad];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KlientTellimus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TellimusSet] DROP CONSTRAINT [FK_KlientTellimus];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TellimusTellimusToode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TellimusToodeSet] DROP CONSTRAINT [FK_TellimusTellimusToode];
+GO
+IF OBJECT_ID(N'[dbo].[FK_laudTellimus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TellimusSet] DROP CONSTRAINT [FK_laudTellimus];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,6 +57,33 @@ IF OBJECT_ID(N'[dbo].[ametSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[AmetiMaaratusSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AmetiMaaratusSet];
+GO
+IF OBJECT_ID(N'[dbo].[KategooriaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KategooriaSet];
+GO
+IF OBJECT_ID(N'[dbo].[ToodeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ToodeSet];
+GO
+IF OBJECT_ID(N'[dbo].[PitsaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PitsaSet];
+GO
+IF OBJECT_ID(N'[dbo].[KoostisosaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KoostisosaSet];
+GO
+IF OBJECT_ID(N'[dbo].[PitsaKoostisosadSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PitsaKoostisosadSet];
+GO
+IF OBJECT_ID(N'[dbo].[KlientSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KlientSet];
+GO
+IF OBJECT_ID(N'[dbo].[TellimusSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TellimusSet];
+GO
+IF OBJECT_ID(N'[dbo].[TellimusToodeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TellimusToodeSet];
+GO
+IF OBJECT_ID(N'[dbo].[laudSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[laudSet];
 GO
 
 -- --------------------------------------------------
