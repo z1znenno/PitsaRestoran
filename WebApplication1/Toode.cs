@@ -18,6 +18,7 @@ namespace WebApplication1
         {
             this.Pitsa = new HashSet<Pitsa>();
             this.PitsaKoostisosad = new HashSet<PitsaKoostisosad>();
+            this.TellimusToode = new HashSet<TellimusToode>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,6 @@ namespace WebApplication1
         public virtual Kategooria Kategooria { get; set; }
         public virtual ICollection<Pitsa> Pitsa { get; set; }
         public virtual ICollection<PitsaKoostisosad> PitsaKoostisosad { get; set; }
+        public virtual ICollection<TellimusToode> TellimusToode { get; set; }
     }
 }

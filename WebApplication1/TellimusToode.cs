@@ -16,7 +16,9 @@ namespace WebApplication1
     {
         public int Id { get; set; }
         public int TellimusId { get; set; }
+        public int ToodeId { get; set; }
     
         public virtual Tellimus Tellimus { get; set; }
+        public virtual Toode Toode { get; set; }
     }
 }

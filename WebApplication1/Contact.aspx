@@ -30,8 +30,11 @@
     <br />
         <h2>Lisa amet</h2>
 <p>
-    <asp:DetailsView ID="DetailsView1" runat="server" DataSourceID="SqlDataSource1" DefaultMode="Insert" Height="50px" Width="125px">
+    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" DefaultMode="Insert" Height="50px" Width="125px">
         <Fields>
+            <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+            <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
+            <asp:BoundField DataField="kirjeldus" HeaderText="kirjeldus" SortExpression="kirjeldus" />
             <asp:CommandField ShowInsertButton="True" />
         </Fields>
     </asp:DetailsView>

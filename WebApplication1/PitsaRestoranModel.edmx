@@ -54,6 +54,10 @@
       <End Role="laud" EntitySet="laudSet" />
       <End Role="Tellimus" EntitySet="TellimusSet" />
     </AssociationSet>
+    <AssociationSet Name="ToodeTellimusToode" Association="PitsaRestoranModel.Store.ToodeTellimusToode">
+      <End Role="Toode" EntitySet="ToodeSet" />
+      <End Role="TellimusToode" EntitySet="TellimusToodeSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TootajaSet">
     <Key>
@@ -148,6 +152,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TellimusId" Type="int" Nullable="false" />
+    <Property Name="ToodeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="laudSet">
     <Key>
@@ -265,6 +270,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ToodeTellimusToode">
+    <End Role="Toode" Type="PitsaRestoranModel.Store.ToodeSet" Multiplicity="1" />
+    <End Role="TellimusToode" Type="PitsaRestoranModel.Store.TellimusToodeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Toode">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TellimusToode">
+        <PropertyRef Name="ToodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -317,6 +334,10 @@
           <AssociationSet Name="laudTellimus" Association="PitsaRestoranModel.laudTellimus">
             <End Role="laud" EntitySet="laudSet" />
             <End Role="Tellimus" EntitySet="TellimusSet" />
+          </AssociationSet>
+          <AssociationSet Name="ToodeTellimusToode" Association="PitsaRestoranModel.ToodeTellimusToode">
+            <End Role="Toode" EntitySet="ToodeSet" />
+            <End Role="TellimusToode" EntitySet="TellimusToodeSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Tootaja">
@@ -374,6 +395,7 @@
           <NavigationProperty Name="Kategooria" Relationship="PitsaRestoranModel.KategooriaToode" FromRole="Toode" ToRole="Kategooria" />
           <NavigationProperty Name="Pitsa" Relationship="PitsaRestoranModel.ToodePitsa" FromRole="Toode" ToRole="Pitsa" />
           <NavigationProperty Name="PitsaKoostisosad" Relationship="PitsaRestoranModel.ToodePitsaKoostisosad" FromRole="Toode" ToRole="PitsaKoostisosad" />
+          <NavigationProperty Name="TellimusToode" Relationship="PitsaRestoranModel.ToodeTellimusToode" FromRole="Toode" ToRole="TellimusToode" />
         </EntityType>
         <Association Name="KategooriaToode">
           <End Type="PitsaRestoranModel.Kategooria" Role="Kategooria" Multiplicity="1" />
@@ -447,6 +469,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Tellimus" Relationship="PitsaRestoranModel.TellimusTellimusToode" FromRole="TellimusToode" ToRole="Tellimus" />
           <Property Name="TellimusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.ToodeTellimusToode" FromRole="TellimusToode" ToRole="Toode" />
+          <Property Name="ToodeId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="KlientTellimus">
           <End Type="PitsaRestoranModel.Klient" Role="Klient" Multiplicity="1" />
@@ -490,6 +514,18 @@
             </Principal>
             <Dependent Role="Tellimus">
               <PropertyRef Name="laudId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ToodeTellimusToode">
+          <End Type="PitsaRestoranModel.Toode" Role="Toode" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.TellimusToode" Role="TellimusToode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TellimusToode">
+              <PropertyRef Name="ToodeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -595,6 +631,7 @@
         <MappingFragment StoreEntitySet="TellimusToodeSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TellimusId" ColumnName="TellimusId" />
+          <ScalarProperty Name="ToodeId" ColumnName="ToodeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

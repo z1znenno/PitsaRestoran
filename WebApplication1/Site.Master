@@ -51,6 +51,15 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Amet</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact2">Ametitöötajad</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact3">Lisa ametitöötajad</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact4">Laud</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact5">Klient</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact6">Tellimus</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact7">Lisa tellimus</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact8">Kategooria</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact9">Toode</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact10">Lisa toode</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact11">TellimusToode</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact12">Lisa TellimusToode</a></li>
                     </ul>
                 </div>
             </div>

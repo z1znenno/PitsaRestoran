@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/15/2026 10:55:44
+-- Date Created: 10/20/2026 09:05:20
 -- Generated from EDMX file: C:\Users\opilane\source\repos\z1znenno\PitsaRestoran\WebApplication1\PitsaRestoranModel.edmx
 -- --------------------------------------------------
 
@@ -180,7 +180,8 @@ GO
 -- Creating table 'TellimusToodeSet'
 CREATE TABLE [dbo].[TellimusToodeSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [TellimusId] int  NOT NULL
+    [TellimusId] int  NOT NULL,
+    [ToodeId] int  NOT NULL
 );
 GO
 
@@ -405,6 +406,21 @@ GO
 CREATE INDEX [IX_FK_laudTellimus]
 ON [dbo].[TellimusSet]
     ([laudId]);
+GO
+
+-- Creating foreign key on [ToodeId] in table 'TellimusToodeSet'
+ALTER TABLE [dbo].[TellimusToodeSet]
+ADD CONSTRAINT [FK_ToodeTellimusToode]
+    FOREIGN KEY ([ToodeId])
+    REFERENCES [dbo].[ToodeSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ToodeTellimusToode'
+CREATE INDEX [IX_FK_ToodeTellimusToode]
+ON [dbo].[TellimusToodeSet]
+    ([ToodeId]);
 GO
 
 -- --------------------------------------------------
